@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 
+// rendering form
 const Form = () => {
+  const title = "Contact Us";
+  const subtitle =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  const checkboxTitle = "Please select at least one of the following:";
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState(0);
+  const [message, setMessage] = useState("");
   const [checkbox, setCheckbox] = useState({
     checkbox1: false,
     checkbox2: false,
   });
-  const [focus, setFocus] = useState(false);
   const [validationError, setError] = useState({
     nameError: "",
     emailError: "",
@@ -55,7 +59,7 @@ const Form = () => {
   const emailRegex = new RegExp(validation.email);
   const phoneRegex = new RegExp(validation.phone);
 
-  // handle Form submition
+  // handle Form submition and make the validations
   const handleFormSubmition = (e) => {
     e.preventDefault();
 
@@ -70,24 +74,24 @@ const Form = () => {
       intermediaryErrors.nameError = "";
     } else {
       intermediaryErrors.nameError =
-        "Not valid name: Please provide a name not starting with space and with only latin characters";
+        "Please provide a name not starting with space and with only latin characters";
     }
 
     if (emailRegex.test(email)) {
       intermediaryErrors.emailError = "";
     } else {
       intermediaryErrors.emailError =
-        "Not valid email: Please provide a valid email";
+        "Please provide a valid email (i.e. <your input>@spitogatos.gr)";
     }
 
     if (phoneRegex.test(phone)) {
       intermediaryErrors.phoneError = "";
     } else {
       intermediaryErrors.phoneError =
-        "Not valid phone number: Please provide a number of 10 digits";
+        "Please provide a number of 10 digits (i.e. 0123456789)";
     }
 
-    if (!(checkbox.checkbox1 == false && checkbox.checkbox2 == false)) {
+    if (!(checkbox.checkbox1 === false && checkbox.checkbox2 === false)) {
       intermediaryErrors.checkboxError = "";
     } else {
       intermediaryErrors.checkboxError = "Please select at least one option";
@@ -96,47 +100,36 @@ const Form = () => {
     setError(intermediaryErrors);
   };
 
-  const handleFocus = () => {
-    setFocus(true);
-  };
-
-  const handleBlur = () => {
-    setFocus(false);
-  };
-
+  // handle info messages regarding user input
   const subInfo = (infoForWhat) => {
-    const helpInfo = <div className="">Help Info</div>;
-    const requiredField = <div className="">This field is required</div>;
+    const helpInfo = <div className="input-info">Help Info</div>;
+    const requiredField = (
+      <div className="input-info">This field is required</div>
+    );
 
     switch (infoForWhat) {
       case "name":
         if (validationError.nameError)
-          return <div className="">{validationError.nameError}</div>;
+          return <div className="input-error">{validationError.nameError}</div>;
         else return name.length > 0 ? helpInfo : requiredField;
       case "email":
         if (validationError.emailError)
-          return <div className="">{validationError.emailError}</div>;
+          return (
+            <div className="input-error">{validationError.emailError}</div>
+          );
         else return email.length > 0 ? helpInfo : requiredField;
       case "phone":
         if (validationError.phoneError)
-          return <div className="">{validationError.phoneError}</div>;
+          return (
+            <div className="input-error">{validationError.phoneError}</div>
+          );
         else return phone.length > 0 ? helpInfo : requiredField;
       case "message":
         return (
-          <div
-            className={
-              message < 2 ? "message-counter" : "message-counter-error"
-            }
-          >
-            {message.length}
-            {message.length > 2 && (
-              <div>Message must not exceed 100 characters</div>
-            )}
+          <div className={message.length < 500 ? "input-info" : "input-error"}>
+            {500 - message.length}
           </div>
         );
-      case "checkbox":
-        if (validationError.checkboxError)
-          return <div className="">{validationError.checkboxError}</div>;
       default:
         return null;
     }
@@ -144,66 +137,80 @@ const Form = () => {
 
   return (
     <div className="form">
-      <div className="form-title">Contact Us</div>
-      <div className="subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua
-      </div>
-      <form className="form" onSubmit={handleFormSubmition}>
-        <input
-          type="text"
-          placeholder="Full Name *"
-          name="name"
-          value={name || ""}
-          onChange={(e) => handleInput(e)}
-        />
-        {subInfo("name")}
-        <input
-          type="text"
-          placeholder="E-mail *"
-          name="email"
-          value={email || ""}
-          onChange={(e) => handleInput(e)}
-        />
-        {subInfo("email")}
-        <input
-          type="text"
-          placeholder="Phone *"
-          name="phone"
-          value={phone || ""}
-          onChange={(e) => handleInput(e)}
-        />
-        {subInfo("phone")}
-        <Dropdown />
-        <textarea
-          type="text"
-          placeholder="Message"
-          name="message"
-          value={message || ""}
-          onChange={(e) => handleInput(e)}
-        />
-        {subInfo("message")}
-        <div className="checkbox-title">
-          Please select at least one of the following:
+      <div className="form-title">{title}</div>
+      <div className="form-subtitle">{subtitle}</div>
+      <form onSubmit={handleFormSubmition}>
+        <div className="input-name">
+          <input
+            type="text"
+            placeholder="Full Name *"
+            name="name"
+            className="input-name__text"
+            value={name || ""}
+            onChange={(e) => handleInput(e)}
+          />
+          {subInfo("name")}
+        </div>{" "}
+        <div className="input-email">
+          <input
+            type="text"
+            placeholder="E-mail *"
+            name="email"
+            className="input-email__text"
+            value={email || ""}
+            onChange={(e) => handleInput(e)}
+          />
+          {subInfo("email")}
         </div>
-        <label>
+        <div className="input-phone">
+          <input
+            type="text"
+            placeholder="Phone *"
+            name="phone"
+            className="input-phone__text"
+            value={phone || ""}
+            onChange={(e) => handleInput(e)}
+          />
+          {subInfo("phone")}
+        </div>
+        <Dropdown />
+        <div className="input-message">
+          <textarea
+            type="text"
+            placeholder="Message"
+            name="message"
+            className="input-message__text"
+            value={message || ""}
+            onChange={(e) => handleInput(e)}
+          />
+          {subInfo("message")}
+        </div>
+        <div
+          className={
+            !validationError.checkboxError ? "checkbox-title" : "checkbox-error"
+          }
+        >
+          {checkboxTitle}
+        </div>
+        <label className="checkbox-1-label">
           <input
             name="checkbox1"
             type="checkbox"
+            className="checkbox-1"
             onChange={(e) => handleInput(e)}
           />
           Option 1
         </label>
-        <label>
+        <label className="checkbox-2-label">
           <input
             name="checkbox2"
             type="checkbox"
+            className="checkbox-2"
             onChange={(e) => handleInput(e)}
           />
           Option 2
         </label>
-        {subInfo("checkbox")}
-        <button className="form__button">Submit</button>
+        <button className="form-button">Submit</button>
       </form>
     </div>
   );

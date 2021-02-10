@@ -1,0 +1,58 @@
+.form-title {
+  width: 695px;
+  height: 32px;
+  text-align: left;
+  font: normal normal 800 32px/39px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin: 104px 185px 0px 184px;
+}
+
+.form-subtitle {
+  width: 696px;
+  height: 48px;
+  text-align: left;
+  font: normal normal normal 18px/26px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  margin: 32px 184px 48px 184px;
+}
+
+.form-button {
+  width: 328px;
+  height: 56px;
+  background: #4b00ff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000066;
+  border-radius: 42px;
+  opacity: 1;
+  margin: 40px 368px 112px 368px;
+  font: normal normal 800 18px/22px $Montserrat;
+  text-align: left;
+  letter-spacing: 0px;
+  color: #ffffff;
+  padding: 17px 126px 17px 133px;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .form-title {
+    width: auto;
+    height: auto;
+    margin: 15px auto 15px auto;
+  }
+
+  .form-subtitle {
+    width: auto;
+    height: auto;
+    margin: 15px auto 15px auto;
+  }
+
+  .form-button {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin: 15px auto 15px auto;
+    padding: auto;
+  }
+}

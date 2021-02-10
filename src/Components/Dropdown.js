@@ -10,11 +10,13 @@ const loadData = async () => {
   return res.json();
 };
 
+// rendering dropdown menus
 const Dropdown = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState();
   const { data, error, isLoading } = useAsync({ promiseFn: loadData });
 
+  // when data fetched feed state object
   useEffect(() => {
     if (data) {
       const array = data.map((category) => ({
@@ -32,6 +34,7 @@ const Dropdown = () => {
     }
   }, [data]);
 
+  // convert all fetced cateogries to a valid html tag
   const categoryListWithHtml = categoryList.map((category) => {
     return (
       <option key={category.categoryId} value={category.categoryName}>
@@ -40,6 +43,7 @@ const Dropdown = () => {
     );
   });
 
+  // only for user's selected category convert fetced subcategories to a valid html tag
   const subCategoryListWithHtml = categoryList
     .filter((category) => category.categoryName === selectedCategory)
     .filter((category) => category.subCategories.length > 0)
@@ -56,22 +60,28 @@ const Dropdown = () => {
       });
     });
 
+  // get user selection
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
   };
 
+  // waiting to fetch data
   if (isLoading) return "";
+
+  // data fetched unsuccesfully
   if (error) return `Something went wrong: ${error.message}`;
+
+  // data fetched successfully
   if (data) {
     return (
-      <div>
-        <select onChange={(e) => handleChange(e)}>
+      <div className="dropdowns">
+        <select className="dropdown-1" onChange={(e) => handleChange(e)}>
           {categoryListWithHtml}
         </select>
-        <select>{subCategoryListWithHtml}</select>
+        <select className="dropdown-2">{subCategoryListWithHtml}</select>
       </div>
     );
-  }
+  } else return null;
 };
 
 export default Dropdown;

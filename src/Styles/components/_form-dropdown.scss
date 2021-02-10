@@ -1,0 +1,37 @@
+.dropdowns {
+  display: flex;
+  justify-content: space-between;
+  width: 696px;
+  height: 32px;
+  margin: 16px 184px 40px 184px;
+}
+
+.dropdown-1,
+.dropdown-2 {
+  width: 328px;
+  font: normal normal medium 16px/24px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+  border: 1px solid #000000;
+  border-radius: 28px;
+  padding-left: 40px;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .dropdowns {
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    width: auto;
+    height: auto;
+    margin: auto;
+  }
+
+  .dropdown-1,
+  .dropdown-2 {
+    width: auto;
+    height: 32px;
+    margin-bottom: 23px;
+  }
+}

@@ -1,0 +1,48 @@
+.content-container {
+  display: flex;
+}
+
+.map-image {
+  top: 2328px;
+  left: -534px;
+  width: 1390px;
+  height: 1032px;
+  background: transparent url("../../Images/Image 2.png") 0% 0% no-repeat
+    padding-box;
+  mix-blend-mode: multiply;
+  opacity: 1;
+}
+
+.form {
+  top: 2328px;
+  left: 856px;
+  width: 1064px;
+  height: 1080px;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .content-container {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 15px;
+  }
+
+  .form {
+    width: auto;
+    height: auto;
+    background: #f8f8f8 0% 0% no-repeat padding-box;
+    opacity: 1;
+    padding: 15px;
+  }
+
+  .map-image {
+    width: auto;
+    height: 400px;
+    background: transparent url("../../Images/Image 2.png") 0% 0% no-repeat
+      padding-box;
+    mix-blend-mode: multiply;
+    opacity: 1;
+  }
+}

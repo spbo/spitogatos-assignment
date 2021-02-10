@@ -1,0 +1,75 @@
+.checkbox-title {
+  width: 680px;
+  height: 19px;
+  margin: 16px 192px 21px 192px;
+  text-align: left;
+  font: normal normal normal 16px/16px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 0.8;
+}
+
+.checkbox-error {
+  width: 680px;
+  height: 19px;
+  margin: 16px 192px 21px 192px;
+  text-align: left;
+  font: normal normal normal 16px/16px $Montserrat;
+  letter-spacing: 0px;
+  color: red;
+  opacity: 0.8;
+}
+
+.checkbox-1 {
+  width: 24px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  opacity: 1;
+  margin: 0px 8px 0px 192px;
+}
+
+.checkbox-1-label {
+  width: 67px;
+  height: 19px;
+  text-align: left;
+  font: normal normal medium 16px/24px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 0.8;
+  margin: 0px 37px 0px 0px;
+}
+
+.checkbox-2 {
+  width: 24px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  opacity: 1;
+  margin: 0px 8px 0px 0px;
+}
+
+.checkbox-2-label {
+  width: 70px;
+  height: 19px;
+  text-align: left;
+  font: normal normal medium 16px/24px $Montserrat;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 0.8;
+  margin: 0px 37px 0px 0px;
+}
+
+@media (max-width: $desktop-breakpoint) {
+  .checkbox-title,
+  .checkbox-error {
+    width: auto;
+    height: auto;
+    margin: auto auto 15px auto;
+  }
+
+  .checkbox-1,
+  .checkbox-2 {
+    width: auto;
+    margin: auto;
+    margin: 0px 8px 15px auto;
+  }
+}
