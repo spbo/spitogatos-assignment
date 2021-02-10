@@ -23,7 +23,7 @@ In the project directory, you can run:
 Then open [http://localhost:3000] to view it in the browser.
 
 ### Logic description ###
-Project is made up of four components: `App` , `Dashboard` , `Form` and `Dropdown`
+Project is made up of four components: `App`, `Dashboard`, `Form` and `Dropdown`
 
 `App` - component used as a container for entire application.
 
@@ -33,5 +33,5 @@ Project is made up of four components: `App` , `Dashboard` , `Form` and `Dropdow
 
 `Dropdown` - component is responsible for fetching Categories and Subcategories with an async call to API and for rendering two dropdown menus respectively.
 
-## Regarding styling ##
+#### Regarding styling ####
 A responsive design is performed when the max-width: 50rem.
