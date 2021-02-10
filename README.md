@@ -1,4 +1,4 @@
-*Technical description*
+### Technical description ###
 This project was created with Create React App.
 
 Additional libraries which have been used are:
@@ -8,11 +8,11 @@ Additional libraries which have been used are:
 
 Application was developed in OS Windows 10 and Visual Studio Code and tested in:
 
-- Firefox version 85.0
-- Chrome version 88.0.4324.150
-- Edge version 88.0.705.63
+- Mozilla Firefox version 85.0
+- Google Chrome version 88.0.4324.150
+- Microsoft Edge version 88.0.705.63
 
-*How to run description*
+### How to run description ###
 
 **Note: node_modules must be installed before starting server by executing `npm install` or `yarn install`**
 
@@ -22,16 +22,16 @@ In the project directory, you can run:
 
 Then open [http://localhost:3000] to view it in the browser.
 
-*Logic description*
-Project is made up of four components: `App`, `Dashboard`, `Form` and `Dropdown`
+### Logic description ###
+Project is made up of four components: `App` , `Dashboard` , `Form` and `Dropdown`
 
-`App` component used as a container for entire application.
+`App` - component used as a container for entire application.
 
-`Dashboard` component renders the requested mockup: A map (as an image) and a form.
+`Dashboard` - component renders the requested mockup: A map (as an image) and a form.
 
-`Form` component renders all elements of the form. Also, is where user's input validation is performed, with the appropriate info messages (error, help info, required field)
+`Form` - component renders all elements of the form. Also, is where user's input validation is performed, with the appropriate info messages (error, help info, required field)
 
-`Dropdown` component is responsible for fetching Categories and Subcategories with an async call to API and for rendering two dropdown menus respectively.
+`Dropdown` - component is responsible for fetching Categories and Subcategories with an async call to API and for rendering two dropdown menus respectively.
 
-Regarding styling:
+## Regarding styling ##
 A responsive design is performed when the max-width: 50rem.
